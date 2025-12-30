@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 import "./Register.css";
 
 const Register = () => {
@@ -8,6 +9,8 @@ const Register = () => {
     email: "",
     password: ""
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,7 +23,17 @@ const Register = () => {
         "http://localhost:5000/api/auth/register",
         formData
       );
-      alert("Registered successfully");
+
+      const loginRes = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email: formData.email,
+          password: formData.password
+        }
+      );
+
+      localStorage.setItem("token", loginRes.data.token);
+      navigate("/notes");
     } catch (err) {
       alert(err.response?.data?.message || "Registration failed");
     }
@@ -53,7 +66,12 @@ const Register = () => {
           required
         />
 
-        <button type="submit">Register</button>
+        <button type="submit">Create Account</button>
+
+        <p className="auth-link">
+          Already have an account?{" "}
+          <Link to="/login">Login</Link>
+        </p>
       </form>
     </div>
   );

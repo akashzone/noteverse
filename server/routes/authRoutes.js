@@ -2,7 +2,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const User = require('../models/User');
 
 const router = express.Router();
 
@@ -47,7 +47,7 @@ router.post("/login",async (req,res)=>{
             process.env.JWT_SECRET,
             {expiresIn : "7d"}
         )
-
+        console.log(token);
         res.json({token});
     }
     catch(err){

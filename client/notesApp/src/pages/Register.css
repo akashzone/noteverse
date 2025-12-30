@@ -1,32 +1,47 @@
-/* Reuse same base layout */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
 .auth-container {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #e0e7ff, #f8fafc);
 }
 
 .auth-form {
-  background: #ffffff;
-  padding: 35px;
-  width: 340px;
-  border-radius: 10px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  width: 360px;
+  background: #020617;
+  padding: 34px;
+  border-radius: 16px;
+  border: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .auth-form h2 {
+  margin-bottom: 10px;
   text-align: center;
-  margin-bottom: 22px;
-  color: #1f2937;
+  font-size: 22px;
+  font-weight: 600;
+  color: #f8fafc;
 }
 
 .auth-form input {
-  width: 100%;
-  padding: 11px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
+  background: #020617;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 11px 12px;
 }
 
 .auth-form input:focus {
@@ -35,15 +50,33 @@
 }
 
 .auth-form button {
-  width: 100%;
-  padding: 11px;
+  margin-top: 10px;
   background: #6366f1;
   color: #ffffff;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
+  padding: 11px;
+  font-size: 15px;
   cursor: pointer;
 }
 
 .auth-form button:hover {
   background: #4f46e5;
+}
+
+.auth-link {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.auth-link a {
+  color: #818cf8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
 }

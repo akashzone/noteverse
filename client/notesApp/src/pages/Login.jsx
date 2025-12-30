@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -7,6 +8,8 @@ const Login = () => {
     email: "",
     password: ""
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,8 +22,9 @@ const Login = () => {
         "http://localhost:5000/api/auth/login",
         formData
       );
+
       localStorage.setItem("token", res.data.token);
-      alert("Login successful");
+      navigate("/notes");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     }
@@ -48,6 +52,11 @@ const Login = () => {
         />
 
         <button type="submit">Login</button>
+
+        <p className="auth-link">
+          Don’t have an account?{" "}
+          <Link to="/register">Sign up</Link>
+        </p>
       </form>
     </div>
   );
